@@ -20,11 +20,18 @@
 EdgeTX is the cutting edge of OpenTX. It is the place where innovative ideas and cutting-edge features are developed and field-tested by the enthusiasts of our hobby. EdgeTX is a community project – ideas from the community, developed by the community, and enjoyed by the community! The community will always have a say in what EdgeTX is and what EdgeTX will be in the future. Without community feedback and involvement EdgeTX cannot exist.
 
 ### Fork resources
+- Project tag: lr2-alpha-20260114
 - EdgeTX upstream: https://github.com/EdgeTX/edgetx
 - OpenTX upstream: https://github.com/opentx/opentx
 - digaus OpenTX fork (BetaFPV branch): https://github.com/digaus/opentx
 - RC Groups mod thread: https://www.rcgroups.com/forums/showthread.php?3660773-BetaFPV-LiteRadio2-advanced-modifications#post45024673
 - LiteRadio2 fork notes: docs/betafpv-lr2-digaus.md
+
+### LiteRadio2 added features
+- SH1106 OLED support with 2px column offset and segment/com inversion to fix mirrored output and the left-side bar.
+- Button-based navigation replaces rotary encoder actions (page next/prev on PLUS/MINUS).
+- External module telemetry direction aligned with the LR2 hardware mod (S.PORT TX/RX direction).
+- SD card detect bypass for boards without a physical SD card.
 
 ### Community
 - [Discord](https://discord.gg/wF9wUKnZ6H)   
