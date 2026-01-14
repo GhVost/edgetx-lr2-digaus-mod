@@ -481,6 +481,7 @@ LEGACY_NAMES = [
     {
         "targets": {
             "commando8",
+            "lr2",
             "lr3pro",
             "nv14", "el18",
             "t8", "t12",

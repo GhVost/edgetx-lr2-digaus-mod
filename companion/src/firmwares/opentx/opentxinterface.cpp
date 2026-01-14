@@ -334,7 +334,7 @@ int OpenTxFirmware::getCapability(::Capability capability)
       return IS_RADIOMASTER_TX16S(board);
     case HasIntModuleMulti:
       return id.contains("internalmulti") || IS_RADIOMASTER_TX16S(board) || IS_JUMPER_T18(board) ||
-              IS_RADIOMASTER_TX12(board) || IS_JUMPER_TLITE(board) || IS_BETAFPV_LR3PRO(board) ||
+              IS_RADIOMASTER_TX12(board) || IS_JUMPER_TLITE(board) || IS_BETAFPV_LR3PRO(board) || IS_BETAFPV_LR2(board) ||
               (IS_RADIOMASTER_ZORRO(board) && !id.contains("internalelrs")) ||
               (IS_RADIOMASTER_BOXER(board) && !id.contains("internalelrs")) ||
               (IS_RADIOMASTER_POCKET(board) && !id.contains("internalelrs")) ||
@@ -479,6 +479,16 @@ void registerOpenTxFirmwares()
 
   /* BETAFPV LR3PRO board */
   firmware = new OpenTxFirmware(FIRMWAREID("lr3pro"), QCoreApplication::translate("Firmware", "BETAFPV LiteRadio3 Pro"), BOARD_BETAFPV_LR3PRO);
+  addOpenTxCommonOptions(firmware);
+  firmware->addOption("noheli", Firmware::tr("Disable HELI menu and cyclic mix support"));
+  firmware->addOption("nogvars", Firmware::tr("Disable Global variables"));
+  firmware->addOption("lua", Firmware::tr("Enable Lua custom scripts screen"));
+  addOpenTxFontOptions(firmware);
+  registerOpenTxFirmware(firmware);
+  addOpenTxRfOptions(firmware, FLEX);
+
+  /* BETAFPV LR2 board */
+  firmware = new OpenTxFirmware(FIRMWAREID("lr2"), QCoreApplication::translate("Firmware", "BETAFPV LiteRadio2"), BOARD_BETAFPV_LR2);
   addOpenTxCommonOptions(firmware);
   firmware->addOption("noheli", Firmware::tr("Disable HELI menu and cyclic mix support"));
   firmware->addOption("nogvars", Firmware::tr("Disable Global variables"));

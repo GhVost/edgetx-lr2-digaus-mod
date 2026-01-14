@@ -82,7 +82,11 @@ void storagePreMountHook()
 
 bool storageIsPresent()
 {
+#if defined(RADIO_LR2)
+  return true;
+#else
   return (_STORAGE_DRIVER.status(0) & STA_NODISK) == 0;
+#endif
 }
 
 const diskio_driver_t* storageGetDefaultDriver()

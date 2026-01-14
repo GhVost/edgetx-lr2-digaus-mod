@@ -14,6 +14,11 @@ boards = {
         "PCBREV": "LR3PRO",
         "DEFAULT_MODE": "2",
     },
+    "LR2": {
+        "PCB": "X7",
+        "PCBREV": "LR2",
+        "DEFAULT_MODE": "2",
+    },
 }
 
 translations = [
@@ -26,16 +31,24 @@ def timestamp():
 
 
 def build(board, translation, srcdir):
+    generator = os.environ.get("CMAKE_GENERATOR", "Ninja")
     cmake_options = " ".join(["-D%s=%s" % (key, value) for key, value in boards[board].items()])
+    toolchain = os.path.join(srcdir, "cmake", "toolchain", "arm-none-eabi.cmake")
     cwd = os.getcwd()
     if not os.path.exists("output"):
         os.mkdir("output")
     path = tempfile.mkdtemp()
     os.chdir(path)
-    command = "cmake %s -DTRANSLATIONS=%s -DBETAFPV_RELEASE=YES %s" % (cmake_options, translation, srcdir)
+    command = "cmake -G \"%s\" %s -DTRANSLATIONS=%s -DBETAFPV_RELEASE=YES -DEdgeTX_SUPERBUILD=OFF -DNATIVE_BUILD=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"%s\" %s" % (
+        generator,
+        cmake_options,
+        translation,
+        toolchain,
+        srcdir,
+    )
     print(command)
     os.system(command)
-    os.system("make firmware -j16")
+    os.system("cmake --build . --target firmware --parallel 16")
     os.chdir(cwd)
     index = 0
     while 1:

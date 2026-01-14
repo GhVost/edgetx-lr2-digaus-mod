@@ -285,7 +285,10 @@ void lcdRefresh(bool wait)
 
 #if LCD_W == 128
   uint8_t * p = displayBuf;
-#if defined(LCD_W_OFFSET)
+#if defined(RADIO_LR2)
+  // SH1106 uses a 132x64 buffer, so we offset by 2px for the LiteRadio2 OLED.
+  lcdWriteCommand(2);
+#elif defined(LCD_W_OFFSET)
   lcdWriteCommand(LCD_W_OFFSET);
 #endif
   for (uint8_t y=0; y < 8; y++, p+=LCD_W) {
@@ -295,7 +298,7 @@ void lcdRefresh(bool wait)
 #else
     lcdWriteCommand(0x10); // Column addr 0
     lcdWriteCommand(0xB0 | y); // Page addr y
-#if !defined(LCD_VERTICAL_INVERT)
+#if !defined(LCD_VERTICAL_INVERT) && !defined(RADIO_LR2)
     lcdWriteCommand(0x04);
 #endif
 #endif

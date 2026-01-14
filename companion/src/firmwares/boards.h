@@ -85,6 +85,7 @@ namespace Board {
     BOARD_RADIOMASTER_ZORRO,
     BOARD_JUMPER_TPRO,
     BOARD_BETAFPV_LR3PRO,
+    BOARD_BETAFPV_LR2,
     BOARD_IFLIGHT_COMMANDO8,
     BOARD_FLYSKY_EL18,
     BOARD_JUMPER_TPROV2,
@@ -492,6 +493,11 @@ inline bool IS_BETAFPV_LR3PRO(Board::Type board)
   return board == Board::BOARD_BETAFPV_LR3PRO;
 }
 
+inline bool IS_BETAFPV_LR2(Board::Type board)
+{
+  return board == Board::BOARD_BETAFPV_LR2;
+}
+
 inline bool IS_IFLIGHT_COMMANDO8(Board::Type board)
 {
   return board == Board::BOARD_IFLIGHT_COMMANDO8;
@@ -646,6 +652,7 @@ inline bool IS_FAMILY_T16(Board::Type board)
 inline bool IS_FAMILY_T12(Board::Type board)
 {
   return board == Board::BOARD_BETAFPV_LR3PRO ||
+         board == Board::BOARD_BETAFPV_LR2 ||
          board == Board::BOARD_HELLORADIOSKY_V14 ||
          board == Board::BOARD_IFLIGHT_COMMANDO8 ||
          board == Board::BOARD_JUMPER_BUMBLEBEE ||

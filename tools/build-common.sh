@@ -74,6 +74,9 @@ get_target_build_options() {
         lr3pro)
             BUILD_OPTIONS+="-DPCB=X7 -DPCBREV=LR3PRO"
             ;;
+        lr2)
+            BUILD_OPTIONS+="-DPCB=X7 -DPCBREV=LR2"
+            ;;
         commando8)
             BUILD_OPTIONS+="-DPCB=X7 -DPCBREV=COMMANDO8"
             ;;

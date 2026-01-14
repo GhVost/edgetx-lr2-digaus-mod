@@ -208,6 +208,19 @@
   #define KEYS_GPIO_PIN_MDL             LL_GPIO_PIN_11 // PE.11
   #define KEYS_GPIO_REG_TELE            GPIOD
   #define KEYS_GPIO_PIN_TELE            LL_GPIO_PIN_2  // PD.02
+#elif defined(RADIO_LR2)
+  #define KEYS_GPIO_REG_PAGEDN          GPIOD
+  #define KEYS_GPIO_PIN_PAGEDN          LL_GPIO_PIN_3  // PD.03
+  #define KEYS_GPIO_REG_MENU            GPIOD
+  #define KEYS_GPIO_PIN_MENU            LL_GPIO_PIN_7  // PD.07
+  #define KEYS_GPIO_REG_EXIT            GPIOD
+  #define KEYS_GPIO_PIN_EXIT            LL_GPIO_PIN_2  // PD.02
+  #define KEYS_GPIO_REG_ENTER           GPIOE
+  #define KEYS_GPIO_PIN_ENTER           LL_GPIO_PIN_10 // PE.10
+  #define KEYS_GPIO_REG_PLUS            GPIOE
+  #define KEYS_GPIO_PIN_PLUS            LL_GPIO_PIN_9  // PE.09
+  #define KEYS_GPIO_REG_MINUS           GPIOE
+  #define KEYS_GPIO_PIN_MINUS           LL_GPIO_PIN_11 // PE.11
 #elif defined(PCBX7)
   #define KEYS_GPIO_REG_PAGEDN          GPIOD
   #define KEYS_GPIO_PIN_PAGEDN          LL_GPIO_PIN_3  // PD.03
@@ -2423,7 +2436,7 @@
 // Telemetry
 #define TELEMETRY_DIR_GPIO              GPIO_PIN(GPIOD, 4) // PD.04
 #if defined(PCBXLITE) || defined(PCBX9LITE) || defined(RADIO_X9DP2019) || \
-    defined(RADIO_X7ACCESS)
+    defined(RADIO_X7ACCESS) || defined(RADIO_LR2)
   #define TELEMETRY_SET_INPUT           1
 #else
   #define TELEMETRY_SET_INPUT           0
@@ -2644,10 +2657,10 @@
 #endif
 
 // LCD driver
-#if defined(RADIO_TX12) || defined(RADIO_TX12MK2) || defined(RADIO_BOXER) || defined(RADIO_ZORRO) || defined(RADIO_POCKET) || defined(RADIO_FAMILY_JUMPER_T12) || defined(RADIO_T8) || defined(RADIO_COMMANDO8) || defined(RADIO_TPRO) || defined(RADIO_TPROV2) || defined(RADIO_TPROS) || defined(RADIO_FAMILY_T20) || defined(RADIO_MT12) || defined(RADIO_T12MAX) || defined(RADIO_V12) || defined(RADIO_BUMBLEBEE)
+#if defined(RADIO_TX12) || defined(RADIO_TX12MK2) || defined(RADIO_BOXER) || defined(RADIO_ZORRO) || defined(RADIO_POCKET) || defined(RADIO_FAMILY_JUMPER_T12) || defined(RADIO_T8) || defined(RADIO_COMMANDO8) || defined(RADIO_TPRO) || defined(RADIO_TPROV2) || defined(RADIO_TPROS) || defined(RADIO_FAMILY_T20) || defined(RADIO_MT12) || defined(RADIO_T12MAX) || defined(RADIO_V12) || defined(RADIO_BUMBLEBEE) || defined(RADIO_LR2)
   #define LCD_VERTICAL_INVERT
 #endif
-#if defined(RADIO_LR3PRO) || defined(RADIO_TPROV2) || defined(RADIO_TPROS) || defined(RADIO_FAMILY_T20) || defined(RADIO_T14) || defined(RADIO_BUMBLEBEE) || defined(RADIO_GX12) || defined(RADIO_V14)
+#if defined(RADIO_LR3PRO) || defined(RADIO_LR2) || defined(RADIO_TPROV2) || defined(RADIO_TPROS) || defined(RADIO_FAMILY_T20) || defined(RADIO_T14) || defined(RADIO_BUMBLEBEE) || defined(RADIO_GX12) || defined(RADIO_V14)
   #define LCD_HORIZONTAL_INVERT
   #define OLED_SCREEN
 #endif
